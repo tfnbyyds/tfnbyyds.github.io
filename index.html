@@ -2,11 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>天明公会｜总规章</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -14,7 +11,6 @@ body{
   font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
   color:#fff;overflow-x:hidden;background:#05070d;
 }
-
 /* ========== 真实天空背景 ========== */
 .sky-bg{
   position:fixed;inset:0;z-index:-6;
@@ -31,7 +27,6 @@ body{
       #3b387a 100%);
   transition:background 1.4s ease;
 }
-
 /* 真实云层：底层厚云 */
 .cloud-real-bottom{
   position:fixed;left:0;right:0;bottom:0;height:44vh;z-index:-5;pointer-events:none;
@@ -43,7 +38,6 @@ body{
     radial-gradient(760px 300px at 90% 100%, rgba(80,90,140,0.7), transparent 60%);
   filter:blur(0.4px);
 }
-
 /* 真实云层：中层薄雾 */
 .cloud-real-mid{
   position:fixed;left:0;right:0;bottom:18vh;height:30vh;z-index:-4;pointer-events:none;
@@ -54,7 +48,6 @@ body{
   filter:blur(0.8px);
   animation:cloudDrift 60s linear infinite;
 }
-
 /* 真实云层：顶部薄云 */
 .cloud-real-top{
   position:fixed;left:0;right:0;bottom:30vh;height:20vh;z-index:-4;pointer-events:none;
@@ -65,12 +58,10 @@ body{
   filter:blur(1.2px);
   animation:cloudDrift 80s linear infinite reverse;
 }
-
 @keyframes cloudDrift{
   0%{transform:translateX(-6%);}
   100%{transform:translateX(10%);}
 }
-
 /* 真实星光层 */
 .stars-layer{position:fixed;inset:0;z-index:-3;pointer-events:none;}
 .star{
@@ -82,7 +73,6 @@ body{
   0%{opacity:var(--o1,0.15);transform:scale(0.7);}
   100%{opacity:var(--o2,0.85);transform:scale(1.15);}
 }
-
 /* 月辉 */
 .moon-glow{
   position:fixed;top:12%;right:18%;width:260px;height:260px;z-index:-4;pointer-events:none;
@@ -98,7 +88,6 @@ body{
     0 0 120px rgba(255,220,170,0.25),
     inset -6px -8px 14px rgba(120,90,40,0.35);
 }
-
 /* 伤感氛围光 */
 .mood-light{
   position:fixed;inset:0;z-index:-3;pointer-events:none;
@@ -108,7 +97,6 @@ body{
     radial-gradient(500px 300px at 50% 85%, rgba(255,120,140,0.12), transparent 65%);
   mix-blend-mode:screen;
 }
-
 /* 流星 */
 .meteor-layer{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;}
 .meteor{
@@ -127,7 +115,6 @@ body{
   8%{opacity:1;}
   100%{transform:translate(110vw,110vh) rotate(115deg);opacity:0;}
 }
-
 /* 光粒 */
 .particle-layer{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;}
 .particle{
@@ -141,7 +128,6 @@ body{
   12%{opacity:0.9;}
   100%{transform:translateY(-110vh) scale(1);opacity:0;}
 }
-
 /* 飞机 */
 .plane-layer{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
 .plane{
@@ -155,24 +141,16 @@ body{
   10%{opacity:1;}
   100%{transform:translateX(110vw) translateY(-80px) rotate(-4deg);opacity:0.9;}
 }
-
-/* 音乐按钮 */
-.music-btn{
-  position:fixed;top:18px;right:18px;z-index:999;
-  width:48px;height:48px;border-radius:50%;
-  border:1px solid rgba(255,255,255,0.15);
-  background:rgba(255,255,255,0.06);
-  backdrop-filter:blur(10px);
-  color:#fff;font-size:20px;cursor:pointer;
-  box-shadow:0 0 18px rgba(140,170,255,0.25);
-  transition:0.3s;
-}
-.music-btn:hover{transform:rotate(180deg);background:rgba(255,255,255,0.14);}
-
 /* 内容 */
 .container{
   position:relative;max-width:760px;margin:0 auto;
   padding:80px 22px 160px;z-index:10;
+}
+.audio-wrap{
+  text-align:center;margin-bottom:20px;
+}
+audio{
+  width:100%;max-width:340px;
 }
 .hero{
   text-align:center;padding:40px 0 50px;
@@ -212,19 +190,6 @@ body{
   0%{background-position:0% 50%;}
   100%{background-position:100% 50%;}
 }
-
-.music-search{
-  margin-top:28px;display:flex;gap:8px;max-width:460px;margin-left:auto;margin-right:auto;
-}
-.music-search input{
-  flex:1;padding:10px 14px;border-radius:14px;outline:none;border:1px solid rgba(255,255,255,0.15);
-  background:rgba(255,255,255,0.06);color:#fff;
-}
-.music-search button{
-  padding:10px 18px;border:none;border-radius:14px;cursor:pointer;font-weight:bold;
-  background:linear-gradient(90deg,#569cff,#7a6cff);color:#fff;
-}
-
 .rule-card{
   background:linear-gradient(180deg,rgba(18,22,48,0.72),rgba(10,14,34,0.72));
   border:1px solid rgba(160,180,220,0.18);
@@ -274,7 +239,6 @@ body{
 </style>
 </head>
 <body>
-
 <div class="sky-bg"></div>
 <div class="moon-glow"></div>
 <div class="moon-disk"></div>
@@ -287,10 +251,14 @@ body{
 <div class="particle-layer" id="particleLayer"></div>
 <div class="plane-layer" id="planeLayer"></div>
 
-<audio id="bgAudio" loop preload="auto"></audio>
-<button class="music-btn" id="musicBtn" title="背景音乐">♪</button>
-
 <div class="container">
+  <div class="audio-wrap">
+    <audio controls loop>
+      <source src="./hyl.mp3" type="audio/mpeg">
+      浏览器不支持音频
+    
+  </div>
+
   <section class="hero">
     <h1>天明公会</h1>
     <p class="sub">TIANMING ｜ 总规章 · 审核群</p>
@@ -300,12 +268,6 @@ body{
       href="https://qun.qq.com/universal-share/share?ac=1&authKey=zwElqkPXmPzgVXPtg8jpU1hzFogcPD4FGPbL7G35hEtbc0NQ264QvZXYIMZZ0YNp&busi_data=eyJncm91cENvZGUiOiIxMDgxMDk3MTg0IiwidG9rZW4iOiJZUWtRQWVkWDN5L3pDbHZHdjYyQnFULzJlc3F4V1ZzVG13SjU4aHlpcy9iZDkxVXRSSklUNGxMUWN4SjVleWZoIiwidWluIjoiMzg0NzUwOTI2MyJ9&data=5rm1OtGgaPNmaSzYJPKEKPdbzRF_YAGT_Af4aYU5y00pVHextzguUA6r6jNPUijqyBbaXtZbL3YjCMQuq5_IiA&svctype=4&tempid=h5_group_info">
       🚀 点击加入天明【审核群】
     </a>
-
-    <div class="music-search">
-      <input id="searchInput" placeholder="搜索网易云音乐，建议：伤感纯音乐、钢琴、孤独" />
-      <button id="searchBtn">搜索</button>
-    </div>
-    <meting-js id="metingPlayer" server="netease" type="search" id="伤感纯音乐 钢琴" fixed="true" autoplay="false"></meting-js>
   </section>
 
   <section class="rule-card">
@@ -321,21 +283,19 @@ body{
       <span class="tag">荣誉</span>
     </p>
   </section>
-
   <section class="rule-card">
     <h2><span class="icon">📜</span> 职级体系</h2>
 <pre class="rank-tree">
 元帅
 ｜长老会（元老【绝版】、史官、参议、客卿）
-｜部长（军务/招新/内务/后勤/外交）｜将军4-5阶
-｜将军1-3阶
-｜校官1-4阶
-｜士官1-5阶
-｜士兵1-5阶
+｜部长（军务/招新/内务/后勤/外交）｜将军4‑5阶
+｜将军1‑3阶
+｜校官1‑4阶
+｜士官1‑5阶
+｜士兵1‑5阶
 </pre>
     <p style="margin-top:14px;">岗位官职需考核任职，阶级与岗位可以叠加。高阶级代表身份与资历，管理岗位代表职责与权限。</p>
   </section>
-
   <section class="rule-card">
     <h2><span class="icon">📋</span> 管理规则</h2>
     <ul>
@@ -345,18 +305,16 @@ body{
       <li>管理组负责执行公会制度、处理成员反馈、主持招新审核与战时调度。</li>
     </ul>
   </section>
-
   <section class="rule-card">
     <h2><span class="icon">💰</span> 军饷制度</h2>
     <ul>
       <li>军饷主要来源于两项贡献：<span class="highlight">招新</span> 与 <span class="highlight">活跃</span>。</li>
       <li>有效招人标准：新人入会后活跃满六天、不属于多公会、愿意修改马甲。</li>
       <li><span class="highlight">2月停发</span>，其余月份于每月 <span class="highlight">15日、25日</span> 统一发放。</li>
-      <li>活跃度与消息榜前5名可获得 <span class="highlight">2-4元</span> 奖励；重大贡献另行重赏。</li>
+      <li>活跃度与消息榜前5名可获得 <span class="highlight">2‑4元</span> 奖励；重大贡献另行重赏。</li>
       <li>战争动员期间，按实际出力分配奖励，由管理组商议决定。</li>
     </ul>
   </section>
-
   <section class="rule-card">
     <h2><span class="icon">⚖️</span> 公会公约</h2>
     <ul>
@@ -366,7 +324,6 @@ body{
       <li>遵守公会规章，服从管理安排，维护团体秩序与对外形象。</li>
     </ul>
   </section>
-
   <section class="rule-card">
     <h2><span class="icon">📘</span> 入群审核须知</h2>
     <ul>
@@ -376,7 +333,6 @@ body{
       <li>冒充、多公会、资料异常者，管理组有权拒绝或清退。</li>
     </ul>
   </section>
-
   <section class="rule-card">
     <h2><span class="icon">📌</span> 额外补充条例</h2>
     <ul>
@@ -387,7 +343,6 @@ body{
       <li>公会活动通知以群内管理发布消息为准。</li>
     </ul>
   </section>
-
   <p class="footer-tip">—— 天明公会 · 总规章 · 等你登舰 ——</p>
 </div>
 
@@ -407,7 +362,6 @@ for(let i = 0; i < 140; i++){
   s.style.setProperty('--o2', Math.random() * 0.4 + 0.5);
   starsLayer.appendChild(s);
 }
-
 /* ========== 光粒（低频，偏伤感） ========== */
 const particleLayer = document.getElementById('particleLayer');
 function spawnParticle(){
@@ -424,7 +378,6 @@ function spawnParticle(){
   setTimeout(() => p.remove(), 22000);
 }
 setInterval(spawnParticle, 1400);
-
 /* ========== 流星（低频） ========== */
 const meteorLayer = document.getElementById('meteorLayer');
 function spawnMeteor(){
@@ -437,7 +390,6 @@ function spawnMeteor(){
   setTimeout(() => m.remove(), 3000);
 }
 setInterval(() => { if(Math.random() < 0.4) spawnMeteor(); }, 3400);
-
 /* ========== 飞机（滚动触发） ========== */
 const planeLayer = document.getElementById('planeLayer');
 let lastScroll = 0;
@@ -454,28 +406,12 @@ window.addEventListener('scroll', () => {
   if(s > lastScroll + 160) createPlane();
   lastScroll = s;
 });
-
 /* ========== 卡片渐入 ========== */
 const cards = document.querySelectorAll('.rule-card');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
 },{threshold:0.15});
 cards.forEach(c => observer.observe(c));
-
-/* ========== 音乐搜索 ========== */
-const searchBtn = document.getElementById('searchBtn');
-const searchInput = document.getElementById('searchInput');
-const metingPlayer = document.getElementById('metingPlayer');
-function doSearch(){
-  const kw = searchInput.value.trim();
-  if(!kw) return;
-  metingPlayer.setAttribute('id', kw);
-  metingPlayer.setAttribute('type', 'search');
-  metingPlayer.setAttribute('server', 'netease');
-  metingPlayer.reload();
-}
-searchBtn.addEventListener('click', doSearch);
-searchInput.addEventListener('keydown', e => { if(e.key === 'Enter') doSearch(); });
 </script>
 </body>
 </html>
