@@ -11,6 +11,37 @@ body{
   font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
   color:#fff;overflow-x:hidden;background:#05070d;
 }
+
+/* 全屏不透明灰色启动遮罩 */
+.start-mask{
+  position:fixed;
+  inset:0;
+  background:#222430;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition: opacity 0.6s ease;
+}
+.start-mask.hide{
+  opacity:0;
+  pointer-events:none;
+}
+.start-btn{
+  padding:16px 42px;
+  font-size:18px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(90deg,#7a6cff,#569cff);
+  color:#fff;
+  cursor:pointer;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(86, 156, 255, 0.35);
+}
+.start-btn:hover{
+  transform:scale(1.05);
+}
+
 /* ========== 真实天空背景 ========== */
 .sky-bg{
   position:fixed;inset:0;z-index:-6;
@@ -148,12 +179,25 @@ body{
 }
 .audio-wrap{
   text-align:center;margin-bottom:20px;
+  padding:12px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border:1px solid rgba(255,255,255,0.12);
 }
 audio{
   width:100%;max-width:340px;
 }
 .hero{
   text-align:center;padding:40px 0 50px;
+  padding:24px;
+  border-radius:24px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border:1px solid rgba(255,255,255,0.10);
+  margin-bottom:30px;
 }
 .hero h1{
   font-size:56px;font-weight:900;letter-spacing:12px;
@@ -191,10 +235,11 @@ audio{
   100%{background-position:100% 50%;}
 }
 .rule-card{
-  background:linear-gradient(180deg,rgba(18,22,48,0.72),rgba(10,14,34,0.72));
+  background:rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border:1px solid rgba(160,180,220,0.18);
   border-radius:28px;padding:36px 28px;margin-bottom:42px;
-  backdrop-filter:blur(14px);
   box-shadow:0 20px 50px rgba(0,0,0,0.35);
   opacity:0;transform:translateY(44px);
   transition:opacity 0.9s,transform 0.9s cubic-bezier(0.22,1,0.36,1);
@@ -217,7 +262,9 @@ audio{
 .rank-tree{
   font-family:"Consolas","Courier New",monospace;
   white-space:pre-wrap;color:#cfe2ff;
-  background:rgba(60,90,160,0.12);
+  background:rgba(60,90,160,0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-left:3px solid #7aa7ff;
   padding:16px 18px;border-radius:14px;
   font-size:14.5px;line-height:1.85;
@@ -226,11 +273,18 @@ audio{
 .tag{
   display:inline-block;padding:4px 10px;border-radius:999px;
   background:rgba(255,255,255,0.07);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border:1px solid rgba(255,255,255,0.14);
   color:#d7e4ff;font-size:12px;margin-right:6px;
 }
 .footer-tip{
   text-align:center;margin-top:60px;color:#99a8d6;font-size:13px;letter-spacing:2px;
+  padding:14px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 @media(max-width:480px){
   .hero h1{font-size:42px;letter-spacing:8px;}
@@ -239,6 +293,11 @@ audio{
 </style>
 </head>
 <body>
+<!-- 全屏不透明灰屏启动遮罩 -->
+<div class="start-mask" id="startMask">
+  <button class="start-btn" id="enterBtn">点击进入页面</button>
+</div>
+
 <div class="sky-bg"></div>
 <div class="moon-glow"></div>
 <div class="moon-disk"></div>
@@ -253,7 +312,7 @@ audio{
 
 <div class="container">
   <div class="audio-wrap">
-    <audio controls loop>
+    <audio id="bgMusic" controls loop preload="auto">
       <source src="./hyl.mp3" type="audio/mpeg">
       浏览器不支持音频
     
@@ -347,6 +406,16 @@ audio{
 </div>
 
 <script>
+const startMask = document.getElementById('startMask');
+const enterBtn = document.getElementById('enterBtn');
+const bgMusic = document.getElementById('bgMusic');
+
+// 点击按钮：关闭灰屏 + 自动播放音乐
+enterBtn.onclick = function(){
+  startMask.classList.add('hide');
+  bgMusic.play().catch(err=>{});
+}
+
 /* ========== 真实星空 ========== */
 const starsLayer = document.getElementById('starsLayer');
 for(let i = 0; i < 140; i++){
