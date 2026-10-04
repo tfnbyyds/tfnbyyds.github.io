@@ -12,7 +12,7 @@ body{
   color:#fff;overflow-x:hidden;background:#05070d;
 }
 
-/* ========== 真实天空背景 ========== */
+/* 星空背景 */
 .sky-bg{
   position:fixed;inset:0;z-index:-6;
   background:
@@ -26,116 +26,18 @@ body{
       #1b2263 74%,
       #2a2f7a 88%,
       #3b387a 100%);
-  transition:background 1.4s ease;
-}
-.cloud-real-bottom{
-  position:fixed;left:0;right:0;bottom:0;height:44vh;z-index:-5;pointer-events:none;
-  background:
-    radial-gradient(800px 300px at 15% 100%, rgba(60,70,110,0.9), transparent 60%),
-    radial-gradient(900px 340px at 35% 100%, rgba(40,50,90,0.85), transparent 62%),
-    radial-gradient(820px 320px at 55% 100%, rgba(70,80,130,0.75), transparent 60%),
-    radial-gradient(880px 360px at 75% 100%, rgba(50,60,110,0.8), transparent 62%),
-    radial-gradient(760px 300px at 90% 100%, rgba(80,90,140,0.7), transparent 60%);
-  filter:blur(0.4px);
-}
-.cloud-real-mid{
-  position:fixed;left:0;right:0;bottom:18vh;height:30vh;z-index:-4;pointer-events:none;
-  background:
-    radial-gradient(700px 240px at 20% 100%, rgba(140,155,190,0.35), transparent 60%),
-    radial-gradient(760px 260px at 45% 100%, rgba(180,195,220,0.28), transparent 62%),
-    radial-gradient(720px 240px at 70% 100%, rgba(150,165,200,0.32), transparent 60%);
-  filter:blur(0.8px);
-  animation:cloudDrift 60s linear infinite;
-}
-.cloud-real-top{
-  position:fixed;left:0;right:0;bottom:30vh;height:20vh;z-index:-4;pointer-events:none;
-  background:
-    radial-gradient(500px 160px at 25% 100%, rgba(255,255,255,0.12), transparent 65%),
-    radial-gradient(560px 180px at 60% 100%, rgba(230,240,255,0.1), transparent 65%),
-    radial-gradient(480px 150px at 80% 100%, rgba(200,220,255,0.09), transparent 65%);
-  filter:blur(1.2px);
-  animation:cloudDrift 80s linear infinite reverse;
-}
-@keyframes cloudDrift{
-  0%{transform:translateX(-6%);}
-  100%{transform:translateX(10%);}
 }
 .stars-layer{position:fixed;inset:0;z-index:-3;pointer-events:none;}
 .star{
   position:absolute;background:#fff;border-radius:50%;
   animation:twinkle var(--d,4s) ease-in-out infinite alternate;
-  box-shadow:0 0 8px rgba(200,220,255,0.8),0 0 16px rgba(160,190,255,0.4);
 }
 @keyframes twinkle{
-  0%{opacity:var(--o1,0.15);transform:scale(0.7);}
-  100%{opacity:var(--o2,0.95);transform:scale(1.2);}
-}
-.moon-glow{
-  position:fixed;top:12%;right:18%;width:260px;height:260px;z-index:-4;pointer-events:none;
-  background:radial-gradient(circle, rgba(255,240,210,0.22), transparent 70%);
-  filter:blur(18px);
-}
-.moon-disk{
-  position:fixed;top:16%;right:22%;width:54px;height:54px;z-index:-4;pointer-events:none;
-  background:radial-gradient(circle at 35% 30%, #fff7e0, #f2e3b6 60%, #c9b483 100%);
-  border-radius:50%;
-  box-shadow:
-    0 0 40px rgba(255,240,200,0.45),
-    0 0 120px rgba(255,220,170,0.25),
-    inset -6px -8px 14px rgba(120,90,40,0.35);
-}
-.mood-light{
-  position:fixed;inset:0;z-index:-3;pointer-events:none;
-  background:
-    radial-gradient(700px 400px at 30% 20%, rgba(120,90,180,0.18), transparent 65%),
-    radial-gradient(600px 360px at 70% 40%, rgba(80,110,200,0.15), transparent 65%),
-    radial-gradient(500px 300px at 50% 85%, rgba(255,120,140,0.12), transparent 65%);
-  mix-blend-mode:screen;
-}
-.meteor-layer{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;}
-.meteor{
-  position:absolute;width:220px;height:2px;top:-10%;left:-10%;
-  background:linear-gradient(90deg,transparent,#ffffff,#cce0ff,rgba(150,190,255,0.2));
-  filter:blur(0.6px);
-  transform:rotate(115deg);
-  animation:meteorFly linear forwards;
-}
-.meteor::before{
-  content:"";position:absolute;right:-6px;top:-5px;width:12px;height:12px;border-radius:50%;
-  background:#fff;box-shadow:0 0 24px #fff,0 0 50px #9fb8ff,0 0 80px rgba(130,180,255,0.4);
-}
-@keyframes meteorFly{
-  0%{transform:translate(-10vw,-10vh) rotate(115deg);opacity:0;}
-  10%{opacity:1;}
-  90%{opacity:1;}
-  100%{transform:translate(110vw,110vh) rotate(115deg);opacity:0;}
-}
-.particle-layer{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;}
-.particle{
-  position:absolute;border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle,rgba(255,255,255,0.85),rgba(170,190,230,0.35) 40%,transparent 70%);
-  box-shadow:0 0 14px rgba(170,190,230,0.8);
-  animation:particleRise linear forwards;
-}
-@keyframes particleRise{
-  0%{transform:translateY(0) scale(0.5);opacity:0;}
-  12%{opacity:0.9;}
-  100%{transform:translateY(-110vh) scale(1);opacity:0;}
-}
-.plane-layer{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
-.plane{
-  position:absolute;top:22%;width:110px;height:110px;
-  background:radial-gradient(ellipse,rgba(220,235,255,0.28),transparent 70%);
-  filter:blur(16px);border-radius:50%;
-  animation:flyPlane linear forwards;
-}
-@keyframes flyPlane{
-  0%{transform:translateX(-180px) translateY(0) rotate(8deg);opacity:0;}
-  10%{opacity:1;}
-  100%{transform:translateX(110vw) translateY(-80px) rotate(-4deg);opacity:0.9;}
+  0%{opacity:var(--o1,0.15);}
+  100%{opacity:var(--o2,0.95);}
 }
 
-/* ========== 公会页面主体 ========== */
+/* 页面主体，全部毛玻璃卡片 */
 .container{
   position:relative;max-width:760px;margin:0 auto;
   padding:80px 22px 160px;z-index:10;
@@ -154,7 +56,6 @@ body{
   background:linear-gradient(90deg,#ffb07a,#ffd0a8,#ffffff,#9fb8ff,#b9a8ff);
   background-size:200% 200%;
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 0 18px rgba(255,180,120,0.35));
   animation:shine 8s ease-in-out infinite alternate;
 }
 @keyframes shine{
@@ -176,14 +77,10 @@ body{
   background:linear-gradient(90deg,#7a6cff,#569cff,#6bd0ff);
   background-size:200% 200%;
   box-shadow:0 10px 30px rgba(100,140,255,0.4);
-  animation:btnMove 6s ease-in-out infinite alternate;
   transition:0.3s;
 }
 .join-btn:hover{transform:translateY(-4px) scale(1.04);}
-@keyframes btnMove{
-  0%{background-position:0% 50%;}
-  100%{background-position:100% 50%;}
-}
+
 .rule-card{
   background:rgba(255,255,255,0.06);
   backdrop-filter: blur(20px);
@@ -191,19 +88,9 @@ body{
   border:1px solid rgba(160,180,220,0.18);
   border-radius:28px;padding:36px 28px;margin-bottom:42px;
   box-shadow:0 20px 50px rgba(0,0,0,0.35);
-  opacity:0;transform:translateY(44px);
-  transition:opacity 0.9s,transform 0.9s cubic-bezier(0.22,1,0.36,1);
 }
-.rule-card.show{opacity:1;transform:translateY(0);}
 .rule-card h2{
   font-size:24px;margin-bottom:18px;color:#ffd9b0;
-  display:flex;align-items:center;gap:10px;
-}
-.rule-card h2 .icon{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:34px;height:34px;border-radius:12px;
-  background:rgba(255,180,120,0.16);
-  border:1px solid rgba(255,180,120,0.32);
 }
 .rule-card p,.rule-card li{
   color:#e8eeff;line-height:1.9;font-size:15px;
@@ -240,157 +127,12 @@ body{
   .hero h1{font-size:42px;letter-spacing:8px;}
   .rule-card{padding:28px 22px;}
 }
-
-/* ========== 左下角悬浮圆圈按钮 ========== */
-.float-circle-btn{
-  position:fixed;
-  left:16px;
-  bottom:120px;
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  background:#7a6cff;
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 4px 14px rgba(0,0,0,0.22);
-  cursor:pointer;
-}
-.float-circle-btn svg{width:24px;height:24px;fill:#fff;}
-
-/* ========== 播放器弹窗 ========== */
-.music-window{
-  position:fixed;
-  left:16px;
-  bottom:190px;
-  width:calc(100% - 32px);
-  max-width:420px;
-  background:rgba(30,32,50,0.78);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border:1px solid rgba(255,255,255,0.14);
-  border-radius:22px;
-  z-index:9998;
-  padding:20px;
-  box-shadow:0 10px 35px rgba(0,0,0,0.25);
-  display:none;
-}
-.music-window.show{display:block;}
-
-.window-header{
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  position:relative;
-}
-.cover-img{
-  width:64px;
-  height:64px;
-  border-radius:12px;
-  overflow:hidden;
-  background:#222;
-  flex-shrink:0;
-}
-.cover-img img{width:100%;height:100%;object-fit:cover;}
-.song-info{flex:1;min-width:0;}
-.song-name{font-size:18px;font-weight:600;color:#fff;}
-.song-author{font-size:14px;color:#c7d6ff;margin:4px 0;}
-.song-time{font-size:13px;color:#a1b4e8;}
-.close-btn{
-  position:absolute;
-  top:-6px;
-  right:-6px;
-  width:32px;height:32px;
-  border-radius:50%;
-  border:none;
-  background:rgba(255,255,255,0.14);
-  color:#fff;
-  font-size:20px;
-  cursor:pointer;
-}
-
-.search-area{
-  display:flex;gap:8px;margin:14px 0 10px;
-}
-#songSearchInput{
-  flex:1;
-  padding:8px 10px;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,0.12);
-  background:rgba(255,255,255,0.08);
-  color:#fff;
-  outline:none;
-}
-#songSearchInput::placeholder{color:#99a;}
-#searchSongBtn{
-  padding:8px 14px;
-  border-radius:8px;
-  border:none;
-  background:#7a6cff;
-  color:#fff;
-  cursor:pointer;
-}
-
-.progress-area{margin:16px 0;}
-.progress-track{
-  width:100%;height:6px;
-  background:rgba(255,255,255,0.15);
-  border-radius:3px;
-  position:relative;
-  cursor:pointer;
-}
-.progress-fill{
-  height:100%;width:0%;
-  background:#7a6cff;border-radius:3px;
-}
-
-.control-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-around;
-  margin:18px 0;
-}
-.ctrl-small-btn{
-  border:none;background:transparent;color:#fff;
-  font-size:22px;cursor:pointer;
-}
-.play-main-btn{
-  width:72px;height:72px;
-  border-radius:50%;
-  border:none;background:#7a6cff;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-}
-.play-main-btn svg{width:30px;height:30px;fill:#fff;}
-
-.volume-area{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-.vol-icon{font-size:20px;color:#fff;}
-.vol-track{
-  flex:1;height:6px;background:rgba(255,255,255,0.15);border-radius:3px;position:relative;cursor:pointer;
-}
-.vol-fill{
-  height:100%;width:70%;background:#7a6cff;border-radius:3px;
-}
 </style>
 </head>
 <body>
 
 <div class="sky-bg"></div>
-<div class="moon-glow"></div>
-<div class="moon-disk"></div>
-<div class="cloud-real-top"></div>
-<div class="cloud-real-mid"></div>
-<div class="cloud-real-bottom"></div>
-<div class="mood-light"></div>
 <div class="stars-layer" id="starsLayer"></div>
-<div class="meteor-layer" id="meteorLayer"></div>
-<div class="particle-layer" id="particleLayer"></div>
-<div class="plane-layer" id="planeLayer"></div>
 
 <div class="container">
   <section class="hero">
@@ -398,14 +140,13 @@ body{
     <p class="sub">TIANMING ｜ 总规章 · 审核群</p>
     <span class="badge">规则制 · 职级体系 · 军饷制度</span>
     <br />
-    <a class="join-btn" target="_blank"
-      href="https://qun.qq.com/universal-share/share?ac=1&authKey=zwElqkPXmPzgVXPtg8jpU1hzFogcPD4FGPbL7G35hEtbc0NQ264QvZXYIMZZ0YNp&busi_data=eyJncm91cENvZGUiOiIxMDgxMDk3MTg0IiwidG9rZW4iOiJZUWtRQWVkWDN5L3pDbHZHdjYyQnFULzJlc3F4V1ZzVG13SjU4aHlpcy9iZDkxVXRSSklUNGxMUWN4SjVleWZoIiwidWluIjoiMzg0NzUwOTI2MyJ9&data=5rm1OtGgaPNmaSzYJPKEKPdbzRF_YAGT_Af4aYU5y00pVHextzguUA6r6jNPUijqyBbaXtZbL3YjCMQuq5_IiA&svctype=4&tempid=h5_group_info">
+    <a class="join-btn" target="_blank" href="https://qun.qq.com/universal-share/share?ac=1&authKey=zwElqkPXmPzgVXPtg8jpU1hzFogcPD4FGPbL7G35hEtbc0NQ264QvZXYIMZZ0YNp&busi_data=eyJncm91cENvZGUiOiIxMDgxMDk3MTg0IiwidG9rZW4iOiJZUWtRQWVkWDN5L3pDbHZHdjYyQnFULzJlc3F4V1ZzVG13SjU4aHlpcy9iZDkxVXRSSklUNGxMUWN4SjVleWZoIiwidWluIjoiMzg0NzUwOTI2MyJ9&data=5rm1OtGgaPNmaSzYJPKEKPdbzRF_YAGT_Af4aYU5y00pVHextzguUA6r6jNPUijqyBbaXtZbL3YjCMQuq5_IiA&svctype=4&tempid=h5_group_info">
       🚀 点击加入天明【审核群】
     </a>
   </section>
 
   <section class="rule-card">
-    <h2><span class="icon">✨</span> 关于天明公会</h2>
+    <h2>✨ 关于天明公会</h2>
     <p>
       天明公会是一套以<span class="highlight">规则制</span>运行的团体体系，强调职级秩序、管理考核、军饷激励与公约约束。加入前请完整阅读本规章，通过审核群提交信息后等待管理组核实。
     </p>
@@ -419,7 +160,7 @@ body{
   </section>
 
   <section class="rule-card">
-    <h2><span class="icon">📜</span> 职级体系</h2>
+    <h2>📜 职级体系</h2>
 <pre class="rank-tree">
 元帅
 ｜长老会（元老【绝版】、史官、参议、客卿）
@@ -433,7 +174,7 @@ body{
   </section>
 
   <section class="rule-card">
-    <h2><span class="icon">📋</span> 管理规则</h2>
+    <h2>📋 管理规则</h2>
     <ul>
       <li>公会设置 <span class="highlight">6名永久管理</span>，另设 <span class="highlight">5个活跃管理</span>，于每月底轮换。</li>
       <li>入选条件必须三项全部达标：<span class="highlight">月活跃≥15天</span>，<span class="highlight">周消息≥800</span>，<span class="highlight">月招新≥15人</span>。</li>
@@ -443,7 +184,7 @@ body{
   </section>
 
   <section class="rule-card">
-    <h2><span class="icon">💰</span> 军饷制度</h2>
+    <h2>💰 军饷制度</h2>
     <ul>
       <li>军饷主要来源于两项贡献：<span class="highlight">招新</span> 与 <span class="highlight">活跃</span>。</li>
       <li>有效招人标准：新人入会后活跃满六天、不属于多公会、愿意修改马甲。</li>
@@ -454,7 +195,7 @@ body{
   </section>
 
   <section class="rule-card">
-    <h2><span class="icon">⚖️</span> 公会公约</h2>
+    <h2>⚖️ 公会公约</h2>
     <ul>
       <li>职位升降由 <span class="highlight">元帅 + 长老会</span> 共同裁定。</li>
       <li>公会内部禁止内斗滋事，禁止挑拨关系、散布负面情绪。</li>
@@ -464,7 +205,7 @@ body{
   </section>
 
   <section class="rule-card">
-    <h2><span class="icon">📘</span> 入群审核须知</h2>
+    <h2>📘 入群审核须知</h2>
     <ul>
       <li>点击顶部按钮加入审核群。</li>
       <li>进群后请按群内要求提交审核信息。</li>
@@ -474,7 +215,7 @@ body{
   </section>
 
   <section class="rule-card">
-    <h2><span class="icon">📌</span> 额外补充条例</h2>
+    <h2>📌 额外补充条例</h2>
     <ul>
       <li>进入审核群后需要主动修改马甲，格式：<span class="highlight">天明｜昵称</span>。</li>
       <li>禁止发布广告、引战、涉黄、违规内容，违者直接移出公会。</li>
@@ -486,290 +227,20 @@ body{
   <p class="footer-tip">—— 天明公会 · 总规章 · 等你登舰 ——</p>
 </div>
 
-<!-- 左下角悬浮圆圈按钮 -->
-<div class="float-circle-btn" id="floatBtn">
-  <svg viewBox="0 0 24 24" id="floatIcon">
-    <path d="M8 5v14l11-7z"/>
-  </svg>
-</div>
-
-<!-- 播放器弹窗 -->
-<div class="music-window" id="musicWin">
-  <div class="window-header">
-    <div class="cover-img">
-      <img id="coverImg" src="" alt="封面">
-    </div>
-    <div class="song-info">
-      <div class="song-name" id="songName">--</div>
-      <div class="song-author" id="songAuthor">--</div>
-      <div class="song-time"><span id="currentTime">00:00</span> / <span id="totalTime">00:00</span></div>
-    </div>
-    <button class="close-btn" id="winClose">×</button>
-  </div>
-
-  <div class="search-area">
-    <input id="songSearchInput" type="text" placeholder="输入歌曲名字搜索">
-    <button id="searchSongBtn">搜索</button>
-  </div>
-
-  <div class="progress-area">
-    <div class="progress-track" id="progressTrack">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-  </div>
-
-  <div class="control-row">
-    <button class="ctrl-small-btn" id="prevBtn">⏮</button>
-    <button class="play-main-btn" id="playBtn">
-      <svg viewBox="0 0 24 24" id="mainPlayIcon">
-        <path d="M8 5v14l11-7z"/>
-      </svg>
-    </button>
-    <button class="ctrl-small-btn" id="nextBtn">⏭</button>
-  </div>
-
-  <div class="volume-area">
-    <span class="vol-icon">🔊</span>
-    <div class="vol-track" id="volTrack">
-      <div class="vol-fill" id="volFill"></div>
-    </div>
-  </div>
-
-  <audio id="audioPlayer" preload="auto"></audio>
-</div>
-
 <script>
-const audioPlayer = document.getElementById('audioPlayer');
-const floatBtn = document.getElementById('floatBtn');
-const floatIcon = document.getElementById('floatIcon');
-const musicWin = document.getElementById('musicWin');
-const winClose = document.getElementById('winClose');
-const coverImg = document.getElementById('coverImg');
-const songName = document.getElementById('songName');
-const songAuthor = document.getElementById('songAuthor');
-const currentTime = document.getElementById('currentTime');
-const totalTime = document.getElementById('totalTime');
-const playBtn = document.getElementById('playBtn');
-const mainPlayIcon = document.getElementById('mainPlayIcon');
-const progressTrack = document.getElementById('progressTrack');
-const progressFill = document.getElementById('progressFill');
-const volTrack = document.getElementById('volTrack');
-const volFill = document.getElementById('volFill');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const searchSongBtn = document.getElementById('searchSongBtn');
-const songSearchInput = document.getElementById('songSearchInput');
-
-let historyList = [];
-let nowIndex = -1;
-
-function formatTime(s){
-  if(isNaN(s)) return "00:00";
-  let m = Math.floor(s/60);
-  let sec = Math.floor(s%60);
-  return String(m).padStart(2,'0')+":"+String(sec).padStart(2,'0');
+// 生成星星
+const starLayer = document.getElementById("starsLayer");
+for(let i=0;i<120;i++){
+  const s = document.createElement("div");
+  s.className = "star";
+  s.style.left = Math.random()*100 + "%";
+  s.style.top = Math.random()*100 + "%";
+  s.style.width = s.style.height = (Math.random()*2+1)+"px";
+  s.style.setProperty('--d', (Math.random()*3+2)+"s");
+  s.style.setProperty('--o1', Math.random()*0.2+0.1);
+  s.style.setProperty('--o2', Math.random()*0.4+0.6);
+  starLayer.appendChild(s);
 }
-
-function refreshIcon(isPlay){
-  if(isPlay){
-    mainPlayIcon.innerHTML = `<path d="M6 4h4v16H6zm8 0h4v16h-4z"/>`;
-    floatIcon.innerHTML = `<path d="M6 4h4v16H6zm8 0h4v16h-4z"/>`;
-  }else{
-    mainPlayIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`;
-    floatIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`;
-  }
-}
-
-async function loadSongByName(name, autoPlay = false){
-  if(!name) return;
-  const apiUrl = `https://oiapi.net/api/Music_163?name=${encodeURIComponent(name)}`;
-  try{
-    const res = await fetch(apiUrl);
-    const json = await res.json();
-
-    if(!json || json.code !== 200 || !json.data || json.data.length === 0){
-      alert("没有找到该歌曲或暂无音源");
-      return;
-    }
-
-    const song = json.data[0];
-
-    audioPlayer.src = song.url;
-    songName.innerText = song.name || "--";
-    songAuthor.innerText = song.author || song.ar || "--";
-    coverImg.src = song.pic || song.cover || "";
-
-    historyList.push(name);
-    nowIndex = historyList.length - 1;
-
-    if(autoPlay){
-      audioPlayer.play().catch(e=>{
-        console.log("等待用户点击页面后播放", e);
-      });
-    }
-  }catch(err){
-    console.error(err);
-    alert("接口请求失败，请稍后重试");
-  }
-}
-
-floatBtn.onclick = ()=>{
-  musicWin.classList.toggle("show");
-}
-winClose.onclick = ()=>{
-  musicWin.classList.remove("show");
-}
-
-playBtn.onclick = ()=>{
-  if(audioPlayer.paused){
-    audioPlayer.play();
-  }else{
-    audioPlayer.pause();
-  }
-}
-
-audioPlayer.addEventListener('play', ()=>refreshIcon(true));
-audioPlayer.addEventListener('pause', ()=>refreshIcon(false));
-
-audioPlayer.addEventListener('timeupdate', ()=>{
-  if(audioPlayer.duration){
-    const per = audioPlayer.currentTime / audioPlayer.duration * 100;
-    progressFill.style.width = per + "%";
-    currentTime.innerText = formatTime(audioPlayer.currentTime);
-  }
-});
-
-audioPlayer.addEventListener('loadedmetadata', ()=>{
-  totalTime.innerText = formatTime(audioPlayer.duration);
-});
-
-progressTrack.onclick = function(e){
-  const rect = progressTrack.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const ratio = x / rect.width;
-  if(audioPlayer.duration){
-    audioPlayer.currentTime = ratio * audioPlayer.duration;
-  }
-}
-
-volTrack.onclick = function(e){
-  const rect = volTrack.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const ratio = Math.max(0, Math.min(1, x / rect.width));
-  audioPlayer.volume = ratio;
-  volFill.style.width = ratio * 100 + "%";
-}
-
-searchSongBtn.onclick = ()=>{
-  const name = songSearchInput.value.trim();
-  if(!name){
-    alert("请输入歌曲名称");
-    return;
-  }
-  loadSongByName(name, true);
-}
-
-songSearchInput.addEventListener("keydown", (e)=>{
-  if(e.key === "Enter"){
-    searchSongBtn.click();
-  }
-});
-
-prevBtn.onclick = ()=>{
-  if(historyList.length <= 1) return;
-  nowIndex = nowIndex <= 0 ? historyList.length - 1 : nowIndex - 1;
-  loadSongByName(historyList[nowIndex], true);
-}
-
-nextBtn.onclick = ()=>{
-  if(historyList.length <= 1) return;
-  nowIndex = nowIndex >= historyList.length - 1 ? 0 : nowIndex + 1;
-  loadSongByName(historyList[nowIndex], true);
-}
-
-/* ========== 真实星空 ========== */
-const starsLayer = document.getElementById('starsLayer');
-for(let i = 0; i < 140; i++){
-  const s = document.createElement('div');
-  s.className = 'star';
-  const size = Math.random() * 1.8 + 0.4;
-  s.style.width = size + 'px';
-  s.style.height = size + 'px';
-  s.style.left = Math.random() * 100 + '%';
-  s.style.top = Math.random() * 75 + '%';
-  s.style.setProperty('--d', (Math.random() * 5 + 3) + 's');
-  s.style.setProperty('--o1', Math.random() * 0.3 + 0.1);
-  s.style.setProperty('--o2', Math.random() * 0.4 + 0.5);
-  starsLayer.appendChild(s);
-}
-
-/* ========== 光粒 ========== */
-const particleLayer = document.getElementById('particleLayer');
-function spawnParticle(){
-  const p = document.createElement('div');
-  p.className = 'particle';
-  const size = Math.random() * 8 + 3;
-  p.style.width = size + 'px';
-  p.style.height = size + 'px';
-  p.style.left = Math.random() * 100 + '%';
-  p.style.bottom = '-20px';
-  p.style.animationDuration = (Math.random() * 12 + 10) + 's';
-  p.style.opacity = Math.random() * 0.4 + 0.3;
-  particleLayer.appendChild(p);
-  setTimeout(() => p.remove(), 22000);
-}
-setInterval(spawnParticle, 1400);
-
-/* ========== 真实流星 ========== */
-const meteorLayer = document.getElementById('meteorLayer');
-function spawnMeteor(){
-  const m = document.createElement('div');
-  m.className = 'meteor';
-  m.style.top = (Math.random() * 25) + '%';
-  m.style.left = (Math.random() * 30) + '%';
-  m.style.animationDuration = (Math.random() * 2.2 + 1.6) + 's';
-  meteorLayer.appendChild(m);
-  setTimeout(() => m.remove(), 4000);
-}
-setInterval(() => { if(Math.random() < 0.35) spawnMeteor(); }, 3200);
-
-/* ========== 飞机 ========== */
-const planeLayer = document.getElementById('planeLayer');
-let lastScroll = 0;
-function createPlane(){
-  const p = document.createElement('div');
-  p.className = 'plane';
-  p.style.top = (20 + Math.random() * 22) + '%';
-  p.style.animationDuration = (Math.random() * 3 + 4) + 's';
-  planeLayer.appendChild(p);
-  setTimeout(() => p.remove(), 7000);
-}
-window.addEventListener('scroll', () => {
-  const s = window.scrollY;
-  if(s > lastScroll + 160) createPlane();
-  lastScroll = s;
-});
-
-/* ========== 卡片渐入 ========== */
-const cards = document.querySelectorAll('.rule-card');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
-},{threshold:0.15});
-cards.forEach(c => observer.observe(c));
-
-/* ========== 默认加载并在首次点击页面后播放 ========== */
-window.addEventListener('DOMContentLoaded', ()=>{
-  loadSongByName("晴天", false);
-
-  const startPlayOnce = ()=>{
-    if(!audioPlayer.paused) return;
-    audioPlayer.play().catch(e=>{
-      console.log("自动播放受浏览器限制", e);
-    });
-    document.body.removeEventListener('click', startPlayOnce);
-  };
-  document.body.addEventListener('click', startPlayOnce);
-});
 </script>
 </body>
 </html>
