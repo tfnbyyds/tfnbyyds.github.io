@@ -1,246 +1,151 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>天明公会｜总规章</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
-  color:#fff;overflow-x:hidden;background:#05070d;
-}
-
-/* 星空背景 */
-.sky-bg{
-  position:fixed;inset:0;z-index:-6;
-  background:
-    radial-gradient(1200px 700px at 50% 110%, rgba(255,140,90,0.35), transparent 60%),
-    radial-gradient(900px 500px at 50% 95%, rgba(255,180,130,0.22), transparent 65%),
-    linear-gradient(180deg,
-      #02030a 0%,
-      #050718 18%,
-      #0a1030 40%,
-      #121746 58%,
-      #1b2263 74%,
-      #2a2f7a 88%,
-      #3b387a 100%);
-}
-.stars-layer{position:fixed;inset:0;z-index:-3;pointer-events:none;}
-.star{
-  position:absolute;background:#fff;border-radius:50%;
-  animation:twinkle var(--d,4s) ease-in-out infinite alternate;
-}
-@keyframes twinkle{
-  0%{opacity:var(--o1,0.15);}
-  100%{opacity:var(--o2,0.95);}
-}
-
-/* 页面主体，全部毛玻璃卡片 */
-.container{
-  position:relative;max-width:760px;margin:0 auto;
-  padding:80px 22px 160px;z-index:10;
-}
-.hero{
-  text-align:center;padding:24px;
-  border-radius:24px;
-  background:rgba(255,255,255,0.06);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border:1px solid rgba(255,255,255,0.10);
-  margin-bottom:30px;
-}
-.hero h1{
-  font-size:56px;font-weight:900;letter-spacing:12px;
-  background:linear-gradient(90deg,#ffb07a,#ffd0a8,#ffffff,#9fb8ff,#b9a8ff);
-  background-size:200% 200%;
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:shine 8s ease-in-out infinite alternate;
-}
-@keyframes shine{
-  0%{background-position:0% 50%;}
-  100%{background-position:100% 50%;}
-}
-.hero .sub{
-  margin-top:16px;color:#c7d6ff;letter-spacing:4px;font-size:16px;
-}
-.hero .badge{
-  display:inline-block;margin-top:20px;padding:8px 18px;border-radius:999px;
-  border:1px solid rgba(255,200,150,0.4);
-  background:rgba(255,200,150,0.1);
-  color:#ffd9b0;font-size:13px;letter-spacing:2px;
-}
-.join-btn{
-  display:inline-block;margin-top:34px;padding:16px 48px;border-radius:999px;
-  text-decoration:none;font-weight:bold;font-size:17px;color:#fff;
-  background:linear-gradient(90deg,#7a6cff,#569cff,#6bd0ff);
-  background-size:200% 200%;
-  box-shadow:0 10px 30px rgba(100,140,255,0.4);
-  transition:0.3s;
-}
-.join-btn:hover{transform:translateY(-4px) scale(1.04);}
-
-.rule-card{
-  background:rgba(255,255,255,0.06);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border:1px solid rgba(160,180,220,0.18);
-  border-radius:28px;padding:36px 28px;margin-bottom:42px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.35);
-}
-.rule-card h2{
-  font-size:24px;margin-bottom:18px;color:#ffd9b0;
-}
-.rule-card p,.rule-card li{
-  color:#e8eeff;line-height:1.9;font-size:15px;
-}
-.rule-card ul{padding-left:20px;}
-.rank-tree{
-  font-family:"Consolas","Courier New",monospace;
-  white-space:pre-wrap;color:#cfe2ff;
-  background:rgba(60,90,160,0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-left:3px solid #7aa7ff;
-  padding:16px 18px;border-radius:14px;
-  font-size:14.5px;line-height:1.85;
-}
-.highlight{color:#ffd9b0;font-weight:bold;}
-.tag{
-  display:inline-block;padding:4px 10px;border-radius:999px;
-  background:rgba(255,255,255,0.07);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border:1px solid rgba(255,255,255,0.14);
-  color:#d7e4ff;font-size:12px;margin-right:6px;
-}
-.footer-tip{
-  text-align:center;margin-top:60px;color:#99a8d6;font-size:13px;letter-spacing:2px;
-  padding:14px;
-  border-radius:14px;
-  background:rgba(255,255,255,0.05);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-@media(max-width:480px){
-  .hero h1{font-size:42px;letter-spacing:8px;}
-  .rule-card{padding:28px 22px;}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>天明昭世 - 我的世界公会官网</title>
+  <meta name="description" content="天明昭世公会官网 - 我的世界公会，职级体系、管理规则、军饷制度、公会公约">
+  <link rel="preconnect" href="https://music.163.com">
+  <link rel="dns-prefetch" href="https://music.163.com">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- 星空背景 Canvas -->
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <!-- 飞机 Canvas -->
+  <canvas id="planes" aria-hidden="true"></canvas>
+  <!-- 流星容器 -->
+  <div id="meteors" aria-hidden="true"></div>
 
-<div class="sky-bg"></div>
-<div class="stars-layer" id="starsLayer"></div>
+  <!-- 主内容区：毛玻璃容器 -->
+  <main class="glass-container" role="main">
+    <header class="header">
+      <h1 class="guild-name">天明昭世</h1>
+      <p class="guild-subtitle">我的世界公会官网</p>
+      <nav class="nav" aria-label="主要导航">
+        <a href="#rules" class="nav-link">规则</a>
+        <a href="#rank" class="nav-link">职级</a>
+        <a href="#salary" class="nav-link">军饷</a>
+        <a href="#covenant" class="nav-link">公约</a>
+      </nav>
+    </header>
 
-<div class="container">
-  <section class="hero">
-    <h1>天明公会</h1>
-    <p class="sub">TIANMING ｜ 总规章 · 审核群</p>
-    <span class="badge">规则制 · 职级体系 · 军饷制度</span>
-    <br />
-    <a class="join-btn" target="_blank" href="https://qun.qq.com/universal-share/share?ac=1&authKey=zwElqkPXmPzgVXPtg8jpU1hzFogcPD4FGPbL7G35hEtbc0NQ264QvZXYIMZZ0YNp&busi_data=eyJncm91cENvZGUiOiIxMDgxMDk3MTg0IiwidG9rZW4iOiJZUWtRQWVkWDN5L3pDbHZHdjYyQnFULzJlc3F4V1ZzVG13SjU4aHlpcy9iZDkxVXRSSklUNGxMUWN4SjVleWZoIiwidWluIjoiMzg0NzUwOTI2MyJ9&data=5rm1OtGgaPNmaSzYJPKEKPdbzRF_YAGT_Af4aYU5y00pVHextzguUA6r6jNPUijqyBbaXtZbL3YjCMQuq5_IiA&svctype=4&tempid=h5_group_info">
-      🚀 点击加入天明【审核群】
-    </a>
-  </section>
+    <div class="content">
+      <!-- 规则总览 -->
+      <section id="rules" class="rule-section" aria-labelledby="rules-title">
+        <h2 id="rules-title" class="section-title">📜 职级体系（高→低）</h2>
+        <ol class="rank-list">
+          <li>元帅</li>
+          <li>长老会：元老【绝版】、史官、参议、客卿</li>
+          <li>部长（军务/招新/内务/后勤/外交）</li>
+          <li>将军 4‑5 阶</li>
+          <li>将军 1‑3 阶</li>
+          <li>校官 1‑4 阶</li>
+          <li>士官 1‑5 阶</li>
+          <li>士兵 1‑5 阶</li>
+        </ol>
+        <p class="rank-note">岗位官职需考核任职，可叠加阶级</p>
+      </section>
 
-  <section class="rule-card">
-    <h2>✨ 关于天明公会</h2>
-    <p>
-      天明公会是一套以<span class="highlight">规则制</span>运行的团体体系，强调职级秩序、管理考核、军饷激励与公约约束。加入前请完整阅读本规章，通过审核群提交信息后等待管理组核实。
-    </p>
-    <p style="margin-top:14px;">
-      <span class="tag">秩序</span>
-      <span class="tag">考核</span>
-      <span class="tag">军饷</span>
-      <span class="tag">公约</span>
-      <span class="tag">荣誉</span>
-    </p>
-  </section>
+      <section id="rank" class="rule-section" aria-labelledby="rank-title">
+        <h2 id="rank-title" class="section-title">📋 管理规则</h2>
+        <ul class="rule-list">
+          <li>6 名永久管理；5 个活跃管理月底轮换</li>
+          <li>入选条件：月活跃 ≥ 15 天，周消息 ≥ 800，月招新 ≥ 15 人，三项全达标，不达标撤职</li>
+          <li>数据以后台为准，造假取消资格</li>
+        </ul>
+      </section>
 
-  <section class="rule-card">
-    <h2>📜 职级体系</h2>
-<pre class="rank-tree">
-元帅
-｜长老会（元老【绝版】、史官、参议、客卿）
-｜部长（军务/招新/内务/后勤/外交）｜将军4‑5阶
-｜将军1‑3阶
-｜校官1‑4阶
-｜士官1‑5阶
-｜士兵1‑5阶
-</pre>
-    <p style="margin-top:14px;">岗位官职需考核任职，阶级与岗位可以叠加。高阶级代表身份与资历，管理岗位代表职责与权限。</p>
-  </section>
+      <section id="salary" class="rule-section" aria-labelledby="salary-title">
+        <h2 id="salary-title" class="section-title">💰 军饷制度</h2>
+        <ul class="rule-list">
+          <li>军饷获取途径：招人和活跃</li>
+          <li>招人：招到活跃天数满六天、非多公会、可改马甲的人有军饷</li>
+          <li>2 月停发，其余每月 15/25 日发放</li>
+          <li>活跃度+消息榜前 5 名：2‑4 元；重大贡献重赏</li>
+          <li>打仗动员按出力另行分配，管理组商议决定</li>
+        </ul>
+      </section>
 
-  <section class="rule-card">
-    <h2>📋 管理规则</h2>
-    <ul>
-      <li>公会设置 <span class="highlight">6名永久管理</span>，另设 <span class="highlight">5个活跃管理</span>，于每月底轮换。</li>
-      <li>入选条件必须三项全部达标：<span class="highlight">月活跃≥15天</span>，<span class="highlight">周消息≥800</span>，<span class="highlight">月招新≥15人</span>。</li>
-      <li>任意一项不达标将被撤职；数据以后台统计为准，造假者直接取消管理资格。</li>
-      <li>管理组负责执行公会制度、处理成员反馈、主持招新审核与战时调度。</li>
-    </ul>
-  </section>
+      <section id="covenant" class="rule-section" aria-labelledby="covenant-title">
+        <h2 id="covenant-title" class="section-title">⚖️ 公会公约</h2>
+        <ul class="rule-list">
+          <li>职位升降由元帅 + 长老会裁定</li>
+          <li>禁止内斗滋事</li>
+          <li>有异议可反馈</li>
+        </ul>
+        <div class="join-group">
+          <p>加入公会群聊：</p>
+          <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=chV1HSvumx%2F%2FWH%2B1aKCK%2FceH4gF1hPqMzCefdGLywQzMNpquopi1G3xdjui9ycok&busi_data=eyJncm91cENvZGUiOiIxMDgxMjY4NjA4IiwidG9rZW4iOiJlM3duR3dZajQvTEo2VVNxZjNkUWg1R0tVcVdQK2Y2MmtyZFZjbUwzVmNHbzlmZkNyZ2hNZ0thNTBYYkNJYjdFIiwidWluIjoiMzg0NzUwOTI2MyJ9&data=ICo4IMmG5dcRVbtFLPAukBaH9uCKEnTRHjXJibsacCc6lnJaIJb2l5btdiPtQmRLFRkOUhR8_YPONYeTA339fA&svctype=4&tempid=h5_group_info"
+             target="_blank" rel="noopener noreferrer" class="join-btn">
+            点击链接加入群聊【天明昭世｜星耀牛逼/.】
+          </a>
+        </div>
+      </section>
+    </div>
 
-  <section class="rule-card">
-    <h2>💰 军饷制度</h2>
-    <ul>
-      <li>军饷主要来源于两项贡献：<span class="highlight">招新</span> 与 <span class="highlight">活跃</span>。</li>
-      <li>有效招人标准：新人入会后活跃满六天、不属于多公会、愿意修改马甲。</li>
-      <li><span class="highlight">2月停发</span>，其余月份于每月 <span class="highlight">15日、25日</span> 统一发放。</li>
-      <li>活跃度与消息榜前5名可获得 <span class="highlight">2‑4元</span> 奖励；重大贡献另行重赏。</li>
-      <li>战争动员期间，按实际出力分配奖励，由管理组商议决定。</li>
-    </ul>
-  </section>
+    <footer class="footer">
+      <p>© 2025 天明昭世公会 | Powered by GitHub Pages</p>
+    </footer>
+  </main>
 
-  <section class="rule-card">
-    <h2>⚖️ 公会公约</h2>
-    <ul>
-      <li>职位升降由 <span class="highlight">元帅 + 长老会</span> 共同裁定。</li>
-      <li>公会内部禁止内斗滋事，禁止挑拨关系、散布负面情绪。</li>
-      <li>成员对处理结果有异议，可按正常流程反馈申诉。</li>
-      <li>遵守公会规章，服从管理安排，维护团体秩序与对外形象。</li>
-    </ul>
-  </section>
+  <!-- 网易云音乐播放器 - 左下角 -->
+  <aside id="music-player" class="music-player" aria-label="网易云音乐播放器" role="region">
+    <!-- 迷你模式：仅显示播放/暂停按钮 -->
+    <button id="player-toggle" class="player-toggle" aria-label="展开音乐播放器" aria-expanded="false">
+      <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
 
-  <section class="rule-card">
-    <h2>📘 入群审核须知</h2>
-    <ul>
-      <li>点击顶部按钮加入审核群。</li>
-      <li>进群后请按群内要求提交审核信息。</li>
-      <li>通过审核后修改公会马甲并遵守群规。</li>
-      <li>冒充、多公会、资料异常者，管理组有权拒绝或清退。</li>
-    </ul>
-  </section>
+    <!-- 展开面板 -->
+    <div id="player-panel" class="player-panel" hidden>
+      <div class="panel-header">
+        <h3>网易云音乐</h3>
+        <button id="panel-close" class="panel-close" aria-label="关闭播放器面板">×</button>
+      </div>
 
-  <section class="rule-card">
-    <h2>📌 额外补充条例</h2>
-    <ul>
-      <li>进入审核群后需要主动修改马甲，格式：<span class="highlight">天明｜昵称</span>。</li>
-      <li>禁止发布广告、引战、涉黄、违规内容，违者直接移出公会。</li>
-      <li>管理不得滥用职权欺压普通成员，违规可向元帅或长老会举报。</li>
-      <li>连续30天无任何消息的成员会被清退，如需保留身份请提前报备。</li>
-      <li>公会活动通知以群内管理发布消息为准。</li>
-    </ul>
-  </section>
-  <p class="footer-tip">—— 天明公会 · 总规章 · 等你登舰 ——</p>
-</div>
+      <!-- 搜索区域 -->
+      <div class="search-area">
+        <input type="text" id="music-search" class="search-input" placeholder="搜索歌曲、歌手、专辑..." autocomplete="off" aria-label="搜索音乐">
+        <div id="search-results" class="search-results" role="listbox" aria-label="搜索结果"></div>
+      </div>
 
-<script>
-// 生成星星
-const starLayer = document.getElementById("starsLayer");
-for(let i=0;i<120;i++){
-  const s = document.createElement("div");
-  s.className = "star";
-  s.style.left = Math.random()*100 + "%";
-  s.style.top = Math.random()*100 + "%";
-  s.style.width = s.style.height = (Math.random()*2+1)+"px";
-  s.style.setProperty('--d', (Math.random()*3+2)+"s");
-  s.style.setProperty('--o1', Math.random()*0.2+0.1);
-  s.style.setProperty('--o2', Math.random()*0.4+0.6);
-  starLayer.appendChild(s);
-}
-</script>
+      <!-- 当前播放信息 -->
+      <div id="now-playing" class="now-playing" hidden>
+        <img id="track-cover" class="track-cover" src="" alt="" aria-hidden="true">
+        <div class="track-info">
+          <p id="track-name" class="track-name">—</p>
+          <p id="track-artist" class="track-artist">—</p>
+        </div>
+      </div>
+
+      <!-- 播放控制栏 -->
+      <div class="playback-controls">
+        <button id="btn-prev" class="ctrl-btn" aria-label="上一首" disabled>⏮</button>
+        <button id="btn-play" class="ctrl-btn main" aria-label="播放" disabled>
+          <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+        <button id="btn-next" class="ctrl-btn" aria-label="下一首" disabled>⏭</button>
+        <div class="progress-wrap">
+          <span id="current-time" class="time">0:00</span>
+          <div class="progress-bar" role="slider" aria-label="播放进度" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <span id="duration" class="time">0:00</span>
+        </div>
+        <button id="btn-volume" class="ctrl-btn" aria-label="静音">🔊</button>
+        <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.05" value="0.7" aria-label="音量">
+      </div>
+
+      <!-- 播放列表 -->
+      <div class="playlist-area">
+        <h4>播放列表</h4>
+        <ul id="playlist" class="playlist" role="listbox" aria-label="播放列表"></ul>
+      </div>
+    </div>
+  </aside>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>
